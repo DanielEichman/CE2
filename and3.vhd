@@ -39,7 +39,7 @@ end and3;
 architecture Behavioral of and3 is
 
 begin
-O<=I0 and I1 and I2;
+O<= (I0 and I1) and I2;
 
 end Behavioral;
 

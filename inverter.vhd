@@ -38,6 +38,6 @@ architecture Behavioral of inverter is
 
 begin
 
-I<= not O;
+O <= not I;
 end Behavioral;
 

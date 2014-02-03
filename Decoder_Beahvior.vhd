@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    15:30:30 02/02/2014 
+-- Create Date:    22:30:14 02/02/2014 
 -- Design Name: 
--- Module Name:    Decoder_Structural - Behavioral 
+-- Module Name:    Decoder_Beahvior - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,7 +29,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Decoder_Structural is
+entity Decoder_Beahvior is
     Port ( I0 : in  STD_LOGIC;
            I1 : in  STD_LOGIC;
            EN : in  STD_LOGIC;
@@ -37,28 +37,17 @@ entity Decoder_Structural is
            Y1 : out  STD_LOGIC;
            Y2 : out  STD_LOGIC;
            Y3 : out  STD_LOGIC);
-end Decoder_Structural;
+end Decoder_Beahvior;
 
-architecture Structural of Decoder_Structural is
-	COMPONENT and3
-		Port ( I0 : in  STD_LOGIC;
-				 I1 : in  STD_LOGIC;
-				 I2 : in  STD_LOGIC;
-				 O : out  STD_LOGIC);
-	END COMPONENT;
-	COMPONENT inverter
-		Port ( I : in  STD_LOGIC;
-				 O : out  STD_LOGIC);
-   END COMPONENT;
-	signal I0_Not, I1_Not : STD_LOGIC;
+architecture Behavioral of Decoder_Beahvior is
+signal I0_NOT, I1_NOT:STD_LOGIC;
 begin
-	I0_invr: inverter PORT MAP(I0,I0_NOT);
-	I1_invr: inverter PORT MAP(I1,I1_NOT);
-	Y0_and3: and3 PORT MAP(I0_Not,I1_Not,EN,Y0);
-	Y1_and3: and3 PORT MAP(I0,I1_Not,EN,Y1);
-	Y2_and3: and3 PORT MAP(I0_Not,I1,EN,Y2);
-	Y3_and3: and3 PORT MAP(I0,I1,EN,Y3);
+I0_NOT<= NOT I0;
+I1_NOT<= NOT I1;
+Y0<=I0_NOT AND I1_NOT AND EN;
+Y1<=I0 AND I1_NOT AND EN;
+Y2<=I0_NOT AND I1 AND EN;
+Y3<=I0 AND I1 AND EN;
 
-end Structural;
-	
-					
+end Behavioral;
+
