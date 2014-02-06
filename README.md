@@ -37,7 +37,20 @@ Below is the truth table derived from the figure in part 6.
 As you can see the values are a once again a perfect match.
 ##Questions 
 ####What did we create?
+We created a decoder. This takes an N bit input and converts it to a 2^N output. So in our case we had a 2 bit input (I0 and I1) and converted it to 4 bits of output. The EN input was a swithch, look at the modifided truth table below for better understanding. 
+
+| EN | I1 | I0 | Y0 | Y1 | Y2 | Y3 |
+|----|----|----|----|----|----|----|
+| 1  | 0  | 0  | 1  | 0  | 0  | 0  |
+| 1  | 0  | 1  | 0  | 1  | 0  | 0  |
+| 1  | 1  | 0  | 0  | 0  | 1  | 0  |
+| 0  | 1  | 1  | 0  | 0  | 0  | 1  |
 ####How does it work?
+It works by essentially hard coding output values. 
+Y0 = EN and not I0 and not I1
+Y0 = EN and not I0 and not I1
+Y0 = EN and not I0 and not I1
+
 ####How can it be useful in the context of computer memory? 
 ##Analysis and conclusion
 Through this exercise I completed the same task in two different manners. I created a code to represent the figure in part 6 using structural and behavioral programming with VHDL. Though it seemed to be that behavioral was much easterner and look less time, I can see how with a bigger program structural programming would be useful. Also I am happy to see that the outputs matched the truth table perfectly in both cases.
